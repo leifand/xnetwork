@@ -1,0 +1,16 @@
+<p><a href='/dashboard'>Go to Ninja Network</a></p>
+<p><a href="/logout" data-method="delete">Logout</a></p>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:errors] %>
+  <p><%= flash[:errors] %></p>
+<% end %>
+
+<p><h3>Users you may want to connect with:</h3></p>
+<!-- show all the users you aren't networked with -->
+<% @users.each do |user| %>
+    <P>----------------</p>
+    <p><a href='/users/<%= user.id %>'><%= user.name.titleize %></a> | <a href='/invite/<%= user.id %>'>Connect</a></p>
+<% end %>

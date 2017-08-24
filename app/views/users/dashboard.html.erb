@@ -1,0 +1,21 @@
+<p><a href='/users'>Go to All Ninjas</a></p>
+<p><a href="/logout" data-method="delete">Logout</a></p>
+<h1>Hi <%= current_user.name.titleize %>!</h1>
+
+<p><h4>Here is your profile description:</h4></p>
+<p><%= current_user.description %></p>
+
+<p><h4>Here is your Ninja Network:</h4></p>
+<!-- show all the users in your network -->
+
+<% @members.each do |member| %>
+  <P>----------------</p>
+  <p><a href='/users/<%= member.user.id %>'><%= member.user.name.titleize %></a>
+<% end %>
+
+<p><h4>Invitations:</h4></p>
+<!-- show all the users you've invited -->
+<% @invitations.each do |invitation| %>
+  <P>----------------</p>
+  <p><a href='/users/<%= invitation.user.id %>'><%= invitation.user.name.titleize %></a> | <a href='/accept/<%= invitation.user.id %>'>Accept Invite</a> | <a href='/ignore/<%= invitation.user.id %>'>Ignore</a></p>
+<% end %>

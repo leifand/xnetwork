@@ -1,0 +1,43 @@
+<h1>Welcome to Ninja Network</h1>
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:errors] %>
+  <p><%= flash[:errors] %></p>
+<% end %>
+
+<!-- Register Form -->
+<h2>Registration / Login</h2>
+<form action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+    <label>Name:</label>
+    <input type="text" name="user[name]"/>
+
+    <label>Email:</label>
+    <input type="email" name="user[email]"/>
+
+    <label>Password:</label>
+    <input type="password" name="user[password]">
+
+    <label>Password Confirmation:</label>
+    <input type="password" name="user[password_confirmation]"/>
+
+    <label>Description:</label>
+    <input type="text" name="user[description]"/>
+
+    <button type="submit">Register</button>
+</form>
+<!-- End Registration Form -->
+
+<!-- Login Form -->
+<h2>Login</h2>
+<form action="/login" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+    <label>Email:</label>
+    <input type="email" name="email"/>
+    <label>Password:</label>
+    <input type="password" name="password"/>
+  <button type="submit">Login</button>
+</form>
+<!-- End Login Form -->
